@@ -1,0 +1,23 @@
+server {
+  listen 443 ssl;
+  ssl_certificate <path_to_cert>;
+  ssl_certificate_key <path_to_privatekey>;
+  
+  server_name <domain>;
+  root <root_path>
+  index index.html index.php
+  
+  location / {
+    try_files $uri $uri/ =404;
+  }
+  
+  location ~\.php$ {
+    include snippets/fastcgi-php.conf;
+    fastcgi_pass unix:/run/php/php8.1-fpm.sock;
+  }
+  
+  location ~ /\.ht {
+    deny all;
+  }
+}
+  
