@@ -1,0 +1,13 @@
+[Unit]
+Description=Flask Application
+After=network.target
+
+[Service]
+User=<user>
+Group=www-data
+WorkingDirectory=<path_to_app>
+Environment="PATH=<path_to_app>/bin"
+ExecStart=<path_to_app>/bin/uwsgi --ini <inifile>
+
+[Install]
+WantedBy=multi-user.target
