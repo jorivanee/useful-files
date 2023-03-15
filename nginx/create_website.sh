@@ -1,6 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 echo "Welcome to this script to create a new nginx host"
 mkdir -p tmp
+chmod 777 tmp
 script=false
 echo "What is the hostname to be used?"
 read -r hostname
@@ -85,6 +86,6 @@ then
 	config+=("  }")
 fi
 config+=("}")
-printf "%s\n" "${config[@]}" > tmp/$hostname
+sudo printf "%s\n" "${config[@]}" > tmp/$hostname
 sudo cp tmp/$hostname /etc/nginx/sites-available/$hostname
 sudo ln /etc/nginx/sites-available/$hostname /etc/nginx/sites-enabled/$hostname
