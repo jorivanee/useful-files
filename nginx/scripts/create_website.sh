@@ -55,6 +55,10 @@ else
 fi
 config+=("")
 config+=("  server_name $hostname;")
+config+=("")
+config+=("  access_log /var/log/nginx/$hostname.access.log;")
+config+=("  error_log /var/log/nginx/$hostname.error.log;")
+config+=("")
 if [ $script = false ]
 then
 	config+=("  root $webroot;")
